@@ -1,58 +1,92 @@
 package jpl.ch02.ex17;
+
+/**
+ *  2つのturnメソッドを追加.
+ *  1:引数として回転する角度を受け取る
+ *  2:Vehicle.TURM_LEFTかTURN_RIGHTを受けとる.
+ * @author Anna.S
+ *
+ */
 public class Vehicle {
-	public final int TURN_LEFT = 1;
-	public final int TURN_RIGHT = -1;
 	private double speed;
 	private double direction;
-	private String owner;
+	private String name;
 
+	private static long nextID = 0;
+	private final long idNum;
 
-	private  static long  nextID = 0;
-	private final long selfID;
+	static final int TURN_LEFT = 0;
+	static final int TURN_RIGHT = 1;
 
-	public void changeSpeed(double a_speed){
-		speed = a_speed;
+	private int way = 1;
+
+	public Vehicle() {
+		idNum = nextID++;
 	}
-	public void stop(){
-		speed = 0;
-	}
-	public void turn(double a_direction){
-		direction += a_direction;
-	}
-	public void turn(int A){
-		if(A==this.TURN_LEFT||A==this.TURN_RIGHT){
-			direction += A*Math.PI/4;
-		}
-	}
-	public String toString(){
-		return selfID + " (" + owner + ")" + "\n" + "speed = " + speed + "\n" + "direction = " + direction;
-	}
-	public Vehicle(){
-		selfID = nextID++;
-	}
-	public Vehicle(String a_owner){
+
+	public Vehicle(String name) {
 		this();
-		owner = a_owner;
+		this.name = name;
 	}
-	public double getspeed(){
+
+	public double getSpeed() {
 		return speed;
 	}
-	public double getdirection(){
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public double getDirection() {
 		return direction;
 	}
-	public String getowner(){
-		return owner;
+
+	public void setDirection(double direction) {
+		this.direction = direction;
 	}
-	public void setspeed(double a_speed){
-		speed = a_speed;
+
+	public String getName() {
+		return name;
 	}
-	public void setdirection(double a_direction){
-		direction = a_direction;
+
+	public void setName(String driver) {
+		this.name = driver;
 	}
-	public void setowner(String a_owner){
-		owner = a_owner;
+
+	public long getIdNum() {
+		return idNum;
 	}
-	public long getID(){
-		return selfID;
+
+	/** 回転する角度を取得.*/
+	public void turn(double direction) {
+		if (way == TURN_LEFT)
+			this.direction -= direction + 180;
+		if (way == TURN_RIGHT)
+			this.direction += direction;
+		while (direction >= 360) {
+			this.direction = direction - 360;
+		}
 	}
+
+	/** 通常は右回り.*/
+	public void turn(int turnWay) {
+		this.way = turnWay;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Vehicle[ID:");
+		sb.append(idNum);
+		sb.append(", speed:");
+		sb.append(speed);
+		sb.append(", direction:");
+		sb.append(direction);
+		sb.append(", name:");
+		sb.append(name);
+		sb.append("]");
+		return sb.toString();
+	}
+
+
 }

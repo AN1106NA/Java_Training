@@ -8,43 +8,15 @@ package jpl.ch02.ex05;
  *
  */
 public class Vehicle {
-	private double speed;
-	private double direction;
-	private String name;
+	public double speed;
+	public double direction;
+	public String name;
 
-	private static long nextID = 0;
-	private final long idNum;
+	public static long nextID = 0;
+	public final long idNum;
 
 	public Vehicle() {
 		idNum = nextID++;
-	}
-
-	public double getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(double speed) {
-		this.speed = speed;
-	}
-
-	public double getDirection() {
-		return direction;
-	}
-
-	public void setDirection(double direction) {
-		this.direction = direction;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getIdNum() {
-		return idNum;
 	}
 
 	public static void main(String[] args) {

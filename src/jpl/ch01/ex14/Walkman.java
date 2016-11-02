@@ -1,20 +1,24 @@
 package jpl.ch01.ex14;
-
+/**
+ *
+ * @author Anna.S
+ *
+ */
 class Walkman {
 	public static final int MAX_MUSIC_NUM = 1000;
 	private String[] musicSet;
-	private int nowPlayingIndex;
+	private int musicIndex;
 
 	public Walkman() {
 		musicSet = new String[MAX_MUSIC_NUM];
-		nowPlayingIndex = -1;
+		musicIndex = -1;
 	}
 
 	/** index で指定した音楽が削除できるか判定する */
 	private boolean canRemoveMusic(int index) {
 		if (index < 0 || index >= musicSet.length) {
 			return false;
-		} else if (nowPlayingIndex == index) {
+		} else if (musicIndex == index) {
 			return false;
 		}
 		return true;
@@ -82,13 +86,13 @@ class Walkman {
 		} else if (musicSet[index] == null) {
 			System.out.println("The music with index does not exit");
 		}
-		nowPlayingIndex = index;
+		musicIndex = index;
 		System.out.println("Play music: " + musicSet[index]);
 	}
 
 	/** 音楽を停止する */
 	public void stopMusic() {
-		nowPlayingIndex = -1;
+		musicIndex = -1;
 		System.out.println("Stop music");
 	}
 }

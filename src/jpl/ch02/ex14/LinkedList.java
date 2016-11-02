@@ -1,27 +1,38 @@
 package jpl.ch02.ex14;
+
+
+/**
+ *  privateフィールドにして、getter/setter追加.
+ * @author Anna.S
+ *
+ */
 public class LinkedList {
 	private Object object;
-	private  LinkedList nextList;
+	private LinkedList nextList;
 
-
-	public LinkedList(Object a_object){
-		object = a_object;
-	}
-	public LinkedList(Object a_object, LinkedList a_nextlist){
-		object = a_object;
-		nextList = a_nextlist;
+	public Object getObject() {
+	    return object;
 	}
 
-	public String toString(){
-		return "object = " + object;
+	public void setObject(Object object) {
+	    this.object = object;
 	}
-	public Object getobject(){
-		return object;
+
+	public LinkedList getNextList() {
+	    return nextList;
 	}
-	public void setobject(Object a_object){
-		object = a_object;
+
+	public void setNextList(LinkedList nextList) {
+	    this.nextList = nextList;
 	}
-	public LinkedList getnextList(){
-		return nextList;
+
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("LinkedList[Object = ");
+		sb.append(object);
+		sb.append("]");
+		return sb.toString();
 	}
 }

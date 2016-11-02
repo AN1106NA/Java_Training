@@ -11,7 +11,6 @@ class Point {
 	public double distance(Point that) {
 		double xdiff = x - that.x;
 		double ydiff = y - that.y;
-
 		return Math.sqrt(xdiff * xdiff + ydiff * ydiff);
 	}
 
