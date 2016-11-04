@@ -9,6 +9,15 @@ public class LinkedList {
 	private Object object;
 	private LinkedList nextList;
 
+	public LinkedList(Object object) {
+		this(object, null);
+	}
+
+	public LinkedList(Object object, LinkedList nextList) {
+		this.object = object;
+		this.nextList = nextList;
+	}
+
 	public Object getObject() {
 		return object;
 	}
@@ -35,10 +44,14 @@ public class LinkedList {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("LinkedList[Object = ");
-		sb.append(object);
-		sb.append("]");
-		return sb.toString();
+		if (object instanceof Vehicle) {
+			String linkedListString;
+			Vehicle v = (Vehicle) object;
+			linkedListString = v.toString();
+			if (nextList != null)
+				linkedListString += nextList.toString();
+			return linkedListString;
+		}
+		return null;
 	}
 }
