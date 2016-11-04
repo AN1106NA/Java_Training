@@ -1,9 +1,9 @@
-package jpl.ch02.ex17;
+package jpl.ch02.ex16;
 
 /**
- *  2つのturnメソッドを追加.
- *  1:引数として回転する角度を受け取る
- *  2:Vehicle.TURM_LEFTかTURN_RIGHTを受けとる.
+ *  乗り物の現在のスピードを引数で渡された値に変更する
+ *  changeSpeedメソッド
+ *  スピードを0にするstopメソッドを追加.
  * @author Anna.S
  *
  */
@@ -15,11 +15,6 @@ public class Vehicle {
 	private static long nextID = 0;
 	private final long idNum;
 
-	static final int TURN_LEFT = 0;
-	static final int TURN_RIGHT = 1;
-
-	private int way = 0;
-
 	public Vehicle() {
 		idNum = nextID++;
 	}
@@ -27,6 +22,14 @@ public class Vehicle {
 	public Vehicle(String name) {
 		this();
 		this.name = name;
+	}
+
+	/** 今まで使われた識別番号の最大値を返す */
+	public static long maxID() {
+		if (nextID == 0)
+			return 0;
+		else
+			return nextID - 1;
 	}
 
 	public double getSpeed() {
@@ -57,25 +60,19 @@ public class Vehicle {
 		return idNum;
 	}
 
-	/** 回転する角度を取得.*/
-	public void turn(double direction) {
-		if (direction < 0)
-			way = TURN_LEFT;
-		if (way == TURN_LEFT) {
-			this.direction += direction;
-			while (this.direction >= 360)
-				this.direction = this.direction - 360;
-		}
-		if (way == TURN_RIGHT) {
-			while (direction >= 360)
-				direction = direction - 360;
-			this.direction += 360 - direction;
-		}
+	/**
+	 *  乗り物のスピードを変更する.
+	 * @param speed
+	 */
+	public void changeSpeed(int speed) {
+		this.speed = speed;
 	}
 
-	/** 通常は右回り.*/
-	public void turn(int turnWay) {
-		this.way = turnWay;
+	/**
+	 *  スピードをゼロにする.
+	 */
+	public void stop() {
+		this.speed = 0;
 	}
 
 	@Override
@@ -89,8 +86,9 @@ public class Vehicle {
 		sb.append(direction);
 		sb.append(", name:");
 		sb.append(name);
+		sb.append(", MaxID:");
+		sb.append(maxID());
 		sb.append("]");
 		return sb.toString();
 	}
-
 }
