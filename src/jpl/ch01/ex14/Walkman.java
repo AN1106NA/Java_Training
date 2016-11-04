@@ -1,27 +1,25 @@
 package jpl.ch01.ex14;
-/**
- *
- * @author Anna.S
- *
- */
+
 public class Walkman {
-	private Talk terminal;
-	public static void main(String[] args){
+	private Talk Talk;
+
+	public static void main(String[] args) {
 		Walkman wm = new Walkman();
-		Terminal terminal = new Terminal();
-		wm.setTerminal(terminal);
+		Talk Talk = new Talk();
+		wm.setTalk(Talk);
 		wm.Play();
-		System.out.println(wm.getTerminal());
+		System.out.println(wm.getTalk());
 	}
-	public Terminal getTerminal(){
-		return terminal;
+
+	public Talk getTalk() {
+		return Talk;
 	}
-	public void setTerminal(Terminal a_terminal){
-		terminal = a_terminal;
+
+	public void setTalk(Talk talk) {
+		Talk = talk;
 	}
-	public void Play(){
+
+	public void Play() {
 		System.out.println("Playing music.");
 	}
-}
-
 }
