@@ -16,7 +16,7 @@ public class ImprovedFibonacci {
 		int count = 0;
 		String mark;
 
-		fibStr[count] = 1+COLON+Integer.toString(lo);
+		fibStr[count] = 1 + COLON + lo;
 		for (int i = MAX; i >= 2; i--) {
 			count++;
 			if (hi % 2 == 0)

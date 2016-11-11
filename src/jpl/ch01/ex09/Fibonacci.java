@@ -11,7 +11,7 @@ public class Fibonacci {
 		int lo = 1;
 		int hi = 1;
 		int count= 0;
-		int[] fibArray = new int[100];
+		int[] fibArray = new int[9];
 		fibArray[count] = lo;
 
 		while (hi < MAX) {
